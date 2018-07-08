@@ -25,61 +25,34 @@ namespace SimForms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("80")]
-        public int health {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool infoBox {
             get {
-                return ((int)(this["health"]));
+                return ((bool)(this["infoBox"]));
             }
             set {
-                this["health"] = value;
+                this["infoBox"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.1-alpha")]
+        public string version {
+            get {
+                return ((string)(this["version"]));
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("70")]
-        public int hunger {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool autosave {
             get {
-                return ((int)(this["hunger"]));
+                return ((bool)(this["autosave"]));
             }
             set {
-                this["hunger"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public int money {
-            get {
-                return ((int)(this["money"]));
-            }
-            set {
-                this["money"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int day {
-            get {
-                return ((int)(this["day"]));
-            }
-            set {
-                this["day"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int time {
-            get {
-                return ((int)(this["time"]));
-            }
-            set {
-                this["time"] = value;
+                this["autosave"] = value;
             }
         }
     }

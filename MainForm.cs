@@ -14,7 +14,7 @@ namespace SimForms
     {
         private void SaveGame()
         {
-            Properties.Settings save = new Properties.Settings
+            Properties.stats save = new Properties.stats
             {
                 health = HealthProgress.Value,
                 hunger = HungerProgress.Value,
@@ -26,7 +26,7 @@ namespace SimForms
         }
         private void LoadGame()
         {
-            Properties.Settings loadsaves = new Properties.Settings();
+            Properties.stats loadsaves = new Properties.stats();
             HealthProgress.Value = loadsaves.health;
             HungerProgress.Value = loadsaves.hunger;
             MoneyBox.Text = loadsaves.money.ToString();
@@ -65,6 +65,15 @@ namespace SimForms
         {
             InitializeComponent();
             LoadGame();
+            Properties.Settings prestart = new Properties.Settings();
+            if (prestart.infoBox)
+            {
+                var result = MessageBox.Show(null, "Хотите ли вы, чтобы весь Ваш прогресс сохранялся автоматически после каждого дня?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.No) prestart.autosave = true;
+                prestart.infoBox = false;
+                prestart.Save();
+            }
+            this.Text = "SimForms: v" + prestart.version;
         }
 
         private void HouseDButton_Click(object sender, EventArgs e)
@@ -85,6 +94,7 @@ namespace SimForms
         private void SaveButton_Click(object sender, EventArgs e)
         {
             SaveGame();
+            MessageBox.Show(null, "Весь Ваш прогресс был успешно сохранён!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void SupermarketCButton_Click(object sender, EventArgs e)
@@ -95,14 +105,12 @@ namespace SimForms
         private void CloseButton_Click(object sender, EventArgs e)
         {
             var close = MessageBox.Show(null, "Весь Ваш прогресс будет удален, если вы не сохранились.\nВы уверены, что хотите закрыть программу?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-            if(close == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            if (close == DialogResult.Yes) this.Close();
         }
 
         private void NextDayButton_Click(object sender, EventArgs e)
         {
+
             if (TimeBoxValue() != 3) TimeBoxValue(TimeBoxValue() + 1);
             else
             {
@@ -111,6 +119,5 @@ namespace SimForms
             }
             SaveGame();
         }
-
     }
 }
