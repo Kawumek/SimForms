@@ -14,7 +14,7 @@ namespace SimForms
     {
         private void SaveGame()
         {
-            Properties.stats save = new Properties.stats
+            Properties.stats stats = new Properties.stats
             {
                 health = HealthProgress.Value,
                 hunger = HungerProgress.Value,
@@ -22,7 +22,7 @@ namespace SimForms
                 day = Convert.ToInt32(DayBox.Text),
                 time = TimeBoxValue()
             };
-            save.Save();
+            stats.Save();
         }
         private void LoadGame()
         {
@@ -32,6 +32,18 @@ namespace SimForms
             MoneyBox.Text = loadsaves.money.ToString();
             DayBox.Text = loadsaves.day.ToString();
             TimeBoxValue(loadsaves.time);
+        }
+        private void SetDefaults()
+        {
+            Properties.stats stats = new Properties.stats
+            {
+                health = 80,
+                hunger = 70,
+                money = 20.00,
+                day = 1,
+                time = 0
+            };
+            stats.Save();
         }
 
         private int TimeBoxValue()
@@ -143,6 +155,13 @@ namespace SimForms
                 DayBox.Text = (Convert.ToInt32(DayBox.Text) + 1).ToString();
             }
             SaveGame();
+        }
+
+        private void newProfileItem_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(null, "Вы потеряете весь свой прогресс!\nВы уверены, что хотите начать заного?", "Внимание!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.OK) SetDefaults();
+            LoadGame();
         }
     }
 }

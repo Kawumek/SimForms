@@ -8,7 +8,7 @@
     <Setting Name="hunger" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">70</Value>
     </Setting>
-    <Setting Name="money" Type="System.Single" Scope="User">
+    <Setting Name="money" Type="System.Double" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="day" Type="System.Int32" Scope="User">

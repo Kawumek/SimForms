@@ -60,9 +60,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.menuItem1 = new System.Windows.Forms.MenuItem();
-            this.menuItem2 = new System.Windows.Forms.MenuItem();
+            this.newProfileItem = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
-            this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.menuItem7 = new System.Windows.Forms.MenuItem();
@@ -348,18 +347,17 @@
             // 
             this.menuItem1.Index = 0;
             this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem2,
+            this.newProfileItem,
             this.menuItem3,
             this.menuItem6,
             this.menuItem10});
             this.menuItem1.Text = "Файл";
             // 
-            // menuItem2
+            // newProfileItem
             // 
-            this.menuItem2.Index = 0;
-            this.menuItem2.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem4});
-            this.menuItem2.Text = "Новый профиль";
+            this.newProfileItem.Index = 0;
+            this.newProfileItem.Text = "Новый профиль";
+            this.newProfileItem.Click += new System.EventHandler(this.newProfileItem_Click);
             // 
             // menuItem3
             // 
@@ -368,11 +366,6 @@
             this.menuItem5,
             this.menuItem11});
             this.menuItem3.Text = "Загрузить профиль";
-            // 
-            // menuItem4
-            // 
-            this.menuItem4.Index = 0;
-            this.menuItem4.Text = "Not working";
             // 
             // menuItem5
             // 
@@ -506,8 +499,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MainMenu mainMenu1;
         private System.Windows.Forms.MenuItem menuItem1;
-        private System.Windows.Forms.MenuItem menuItem2;
-        private System.Windows.Forms.MenuItem menuItem4;
+        private System.Windows.Forms.MenuItem newProfileItem;
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.MenuItem menuItem5;
         private System.Windows.Forms.MenuItem menuItem6;

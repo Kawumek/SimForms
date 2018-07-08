@@ -50,9 +50,9 @@ namespace SimForms.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public float money {
+        public double money {
             get {
-                return ((float)(this["money"]));
+                return ((double)(this["money"]));
             }
             set {
                 this["money"] = value;
