@@ -145,13 +145,13 @@ namespace SimForms
         private void NextDayButton_Click(object sender, EventArgs e)
         {
             Random random = new Random();
-            HealthProgress.Value -= random.Next(0, 2);
-            if (FoodProgress.Value >= 60) HealthProgress.Value += random.Next(0, 2);
-            if (GetDisease()) MessageBox.Show(null, "Из-за недостаточной активности имунной системы Вы простудились, теперь Ваш иммунитет будет слабеть намного быстрее, также Вам необоходимо покупать лекарства для лечения в течении 5 дней.", "Болезнь!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             if (TimeBoxValue() != 3) TimeBoxValue(TimeBoxValue() + 1);
             else
             {
+                HealthProgress.Value -= random.Next(0, 2);
+                if (FoodProgress.Value >= 60) HealthProgress.Value += random.Next(0, 2);
+                if (GetDisease()) MessageBox.Show(null, "Из-за недостаточной активности имунной системы Вы простудились, теперь Ваш иммунитет будет слабеть намного быстрее, также Вам необоходимо покупать лекарства для лечения в течении 5 дней.", "Болезнь!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 TimeBoxValue(0);
                 DayBox.Text = (Convert.ToInt32(DayBox.Text) + 1).ToString();
             }
