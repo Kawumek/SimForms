@@ -46,7 +46,7 @@
             this.SchoolButton = new System.Windows.Forms.Button();
             this.UniversityButton = new System.Windows.Forms.Button();
             this.HealthProgress = new System.Windows.Forms.ProgressBar();
-            this.HungerProgress = new System.Windows.Forms.ProgressBar();
+            this.FoodProgress = new System.Windows.Forms.ProgressBar();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Button();
@@ -230,13 +230,13 @@
             this.HealthProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.HealthProgress.TabIndex = 20;
             // 
-            // HungerProgress
+            // FoodProgress
             // 
-            this.HungerProgress.Location = new System.Drawing.Point(625, 56);
-            this.HungerProgress.Name = "HungerProgress";
-            this.HungerProgress.Size = new System.Drawing.Size(300, 38);
-            this.HungerProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.HungerProgress.TabIndex = 21;
+            this.FoodProgress.Location = new System.Drawing.Point(625, 56);
+            this.FoodProgress.Name = "FoodProgress";
+            this.FoodProgress.Size = new System.Drawing.Size(300, 38);
+            this.FoodProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.FoodProgress.TabIndex = 21;
             // 
             // label3
             // 
@@ -435,7 +435,7 @@
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.HungerProgress);
+            this.Controls.Add(this.FoodProgress);
             this.Controls.Add(this.HealthProgress);
             this.Controls.Add(this.UniversityButton);
             this.Controls.Add(this.SchoolButton);
@@ -485,7 +485,7 @@
         private System.Windows.Forms.Button SchoolButton;
         private System.Windows.Forms.Button UniversityButton;
         private System.Windows.Forms.ProgressBar HealthProgress;
-        private System.Windows.Forms.ProgressBar HungerProgress;
+        private System.Windows.Forms.ProgressBar FoodProgress;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button CloseButton;

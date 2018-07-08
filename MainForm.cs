@@ -17,7 +17,7 @@ namespace SimForms
             Properties.stats stats = new Properties.stats
             {
                 health = HealthProgress.Value,
-                hunger = HungerProgress.Value,
+                hunger = FoodProgress.Value,
                 money = Convert.ToInt32(MoneyBox.Text),
                 day = Convert.ToInt32(DayBox.Text),
                 time = TimeBoxValue()
@@ -28,7 +28,7 @@ namespace SimForms
         {
             Properties.stats loadsaves = new Properties.stats();
             HealthProgress.Value = loadsaves.health;
-            HungerProgress.Value = loadsaves.hunger;
+            FoodProgress.Value = loadsaves.hunger;
             MoneyBox.Text = loadsaves.money.ToString();
             DayBox.Text = loadsaves.day.ToString();
             TimeBoxValue(loadsaves.time);
@@ -78,19 +78,19 @@ namespace SimForms
             Random random = new Random();
             if (HealthProgress.Value > 75)
             {
-                if (random.NextDouble() <= 0.05) return true;
+                if (random.NextDouble() <= 0.01) return true;
             }
             else if (HealthProgress.Value > 50)
             {
-                if (random.NextDouble() <= 0.1) return true;
+                if (random.NextDouble() <= 0.03) return true;
             }
             else if (HealthProgress.Value > 25)
             {
-                if (random.NextDouble() <= 0.25) return true;
+                if (random.NextDouble() <= 0.1) return true;
             }
             else
             {
-                if (random.NextDouble() <= 0.5) return true;
+                if (random.NextDouble() <= 0.3) return true;
             }
             return false;
         }
@@ -145,7 +145,8 @@ namespace SimForms
         private void NextDayButton_Click(object sender, EventArgs e)
         {
             Random random = new Random();
-            HealthProgress.Value -= random.Next(3);
+            HealthProgress.Value -= random.Next(0, 2);
+            if (FoodProgress.Value >= 60) HealthProgress.Value += random.Next(0, 2);
             if (GetDisease()) MessageBox.Show(null, "Из-за недостаточной активности имунной системы Вы простудились, теперь Ваш иммунитет будет слабеть намного быстрее, также Вам необоходимо покупать лекарства для лечения в течении 5 дней.", "Болезнь!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             if (TimeBoxValue() != 3) TimeBoxValue(TimeBoxValue() + 1);
