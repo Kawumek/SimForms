@@ -12,6 +12,39 @@ namespace SimForms
 {
     public partial class MainForm : Form
     {
+        #region Service
+        /// <param name="chance">Range: 0.0 to 1.0</param>
+        private bool Try(double chance)
+        {
+            var random = new Random();
+            if (random.NextDouble() <= chance) return true;
+            else return false;
+        }
+        
+        private int RandomInt()
+        {
+            Random random = new Random();
+            return random.Next();
+        }
+        private int RandomInt(int max)
+        {
+            Random random = new Random();
+            return random.Next(max);
+        }
+        private int RandomInt(int min, int max)
+        {
+            Random random = new Random();
+            return random.Next(min, max);
+        }
+        private double RandomDouble()
+        {
+            Random random = new Random();
+            return random.NextDouble();
+        }
+        #endregion
+
+        #region SaveGames Manager
+        private int homeid;
         private void SaveGame()
         {
             Properties.stats stats = new Properties.stats
@@ -20,7 +53,8 @@ namespace SimForms
                 hunger = FoodProgress.Value,
                 money = Convert.ToInt32(MoneyBox.Text),
                 day = Convert.ToInt32(DayBox.Text),
-                time = TimeBoxValue()
+                time = TimeBoxValue(),
+                homeid = homeid
             };
             stats.Save();
         }
@@ -32,6 +66,8 @@ namespace SimForms
             MoneyBox.Text = loadsaves.money.ToString();
             DayBox.Text = loadsaves.day.ToString();
             TimeBoxValue(loadsaves.time);
+
+            homeid = loadsaves.homeid;
         }
         private void SetDefaults()
         {
@@ -45,7 +81,9 @@ namespace SimForms
             };
             stats.Save();
         }
+        #endregion
 
+        #region TimeBox
         private int TimeBoxValue()
         {
             if (TimeBox.Text == "Ночь") return 0;
@@ -72,28 +110,46 @@ namespace SimForms
                     break;
             }
         }
+        #endregion
 
-        private bool GetDisease()
+        #region Other Stuff
+        private void GetDisease()
         {
             Random random = new Random();
             if (HealthProgress.Value > 75)
             {
-                if (random.NextDouble() <= 0.01) return true;
+
+                if (Try(0.01)) MessageBox.Show(null, "Из-за недостаточной активности имунной системы Вы простудились, теперь Ваш иммунитет будет слабеть намного быстрее, также Вам необоходимо покупать лекарства для лечения в течении 5 дней.", "Болезнь!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (HealthProgress.Value > 50)
             {
-                if (random.NextDouble() <= 0.03) return true;
+                if (Try(0.03)) MessageBox.Show(null, "Из-за недостаточной активности имунной системы Вы простудились, теперь Ваш иммунитет будет слабеть намного быстрее, также Вам необоходимо покупать лекарства для лечения в течении 5 дней.", "Болезнь!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (HealthProgress.Value > 25)
             {
-                if (random.NextDouble() <= 0.1) return true;
+                if (Try(0.1)) MessageBox.Show(null, "Из-за недостаточной активности имунной системы Вы простудились, теперь Ваш иммунитет будет слабеть намного быстрее, также Вам необоходимо покупать лекарства для лечения в течении 5 дней.", "Болезнь!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                if (random.NextDouble() <= 0.3) return true;
+                if (Try(0.3)) MessageBox.Show(null, "Из-за недостаточной активности имунной системы Вы простудились, теперь Ваш иммунитет будет слабеть намного быстрее, также Вам необоходимо покупать лекарства для лечения в течении 5 дней.", "Болезнь!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            return false;
         }
+        private void HomeBonus()
+        {
+            if (homeid == 0 && Try(0.2))
+            {
+                HealthProgress.Value -= RandomInt(2, 5);
+                Properties.stats stats = new Properties.stats();
+                MessageBox.Show(null, "Из-за отсутствия дома вы потеряли " + (stats.health - HealthProgress.Value) + " ед. иммунитета", "Плохие условия!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (homeid==1 && Try(0.05))
+            {
+                HealthProgress.Value -= RandomInt(1, 3);
+                Properties.stats stats = new Properties.stats();
+                MessageBox.Show(null, "Из-за плохих условий проживания вы потеряли " + (stats.health - HealthProgress.Value) + " ед. иммунитета", "Плохие условия!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        #endregion
 
         public MainForm()
         {
@@ -110,6 +166,7 @@ namespace SimForms
             this.Text = "SimForms: v" + prestart.version;
         }
 
+        #region Clicks
         private void HouseDButton_Click(object sender, EventArgs e)
         {
 
@@ -144,19 +201,18 @@ namespace SimForms
 
         private void NextDayButton_Click(object sender, EventArgs e)
         {
-            Random random = new Random();
-
             if (TimeBoxValue() != 3) TimeBoxValue(TimeBoxValue() + 1);
             else
             {
-                HealthProgress.Value -= random.Next(0, 2);
-                if (FoodProgress.Value >= 60) HealthProgress.Value += random.Next(0, 2);
-                if (GetDisease()) MessageBox.Show(null, "Из-за недостаточной активности имунной системы Вы простудились, теперь Ваш иммунитет будет слабеть намного быстрее, также Вам необоходимо покупать лекарства для лечения в течении 5 дней.", "Болезнь!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                HealthProgress.Value -= RandomInt(0,2);
+                if (FoodProgress.Value >= 80) HealthProgress.Value += RandomInt(2, 5);
+                else if (FoodProgress.Value >= 60) HealthProgress.Value += RandomInt(0, 2);
+                GetDisease();
+                HomeBonus();
                 TimeBoxValue(0);
                 DayBox.Text = (Convert.ToInt32(DayBox.Text) + 1).ToString();
                 var stats = new Properties.stats();
-                MessageBox.Show(null, "Настал " + DayBox.Text + " день.\nВаш иммунитет изменился на " + (HealthProgress.Value - stats.health) + " ед.\nВаш уровень сытости изменился на " + (FoodProgress.Value - stats.hunger) + " едениц.", "Следующий день!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //баг: не всегда точно показывает изменение здоровья и голода. Причина не известна.
+                MessageBox.Show(null, "Настал " + DayBox.Text + " день.\nВаш иммунитет изменился на " + (HealthProgress.Value - stats.health) + " ед.\nВаш уровень сытости изменился на " + (FoodProgress.Value - stats.hunger) + " ед.", "Следующий день!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 SaveGame();
             }
         }
@@ -167,5 +223,6 @@ namespace SimForms
             if (result == DialogResult.OK) SetDefaults();
             LoadGame();
         }
+        #endregion
     }
 }

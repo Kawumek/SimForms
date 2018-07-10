@@ -82,5 +82,17 @@ namespace SimForms.Properties {
                 this["time"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int homeid {
+            get {
+                return ((int)(this["homeid"]));
+            }
+            set {
+                this["homeid"] = value;
+            }
+        }
     }
 }
