@@ -63,14 +63,14 @@
             this.newProfileItem = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
+            this.menuItem11 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
-            this.menuItem7 = new System.Windows.Forms.MenuItem();
-            this.menuItem8 = new System.Windows.Forms.MenuItem();
             this.menuItem9 = new System.Windows.Forms.MenuItem();
             this.menuItem10 = new System.Windows.Forms.MenuItem();
-            this.menuItem11 = new System.Windows.Forms.MenuItem();
-            this.menuItem12 = new System.Windows.Forms.MenuItem();
+            this.menuItem7 = new System.Windows.Forms.MenuItem();
+            this.menuItem8 = new System.Windows.Forms.MenuItem();
             this.menuItem13 = new System.Windows.Forms.MenuItem();
+            this.menuItem12 = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
             // 
             // SupermarketCButton
@@ -372,12 +372,27 @@
             this.menuItem5.Index = 0;
             this.menuItem5.Text = "Из текущей библиотеки";
             // 
+            // menuItem11
+            // 
+            this.menuItem11.Index = 1;
+            this.menuItem11.Text = "Из INI файла";
+            // 
             // menuItem6
             // 
             this.menuItem6.Index = 2;
             this.menuItem6.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem9});
             this.menuItem6.Text = "Выгрузить профиль";
+            // 
+            // menuItem9
+            // 
+            this.menuItem9.Index = 0;
+            this.menuItem9.Text = "В INI файл";
+            // 
+            // menuItem10
+            // 
+            this.menuItem10.Index = 3;
+            this.menuItem10.Text = "Выход";
             // 
             // menuItem7
             // 
@@ -394,30 +409,15 @@
             this.menuItem13});
             this.menuItem8.Text = "Просмотреть справку";
             // 
-            // menuItem9
+            // menuItem13
             // 
-            this.menuItem9.Index = 0;
-            this.menuItem9.Text = "В INI файл";
-            // 
-            // menuItem10
-            // 
-            this.menuItem10.Index = 3;
-            this.menuItem10.Text = "Выход";
-            // 
-            // menuItem11
-            // 
-            this.menuItem11.Index = 1;
-            this.menuItem11.Text = "Из INI файла";
+            this.menuItem13.Index = 0;
+            this.menuItem13.Text = "";
             // 
             // menuItem12
             // 
             this.menuItem12.Index = 1;
             this.menuItem12.Text = "О программе";
-            // 
-            // menuItem13
-            // 
-            this.menuItem13.Index = 0;
-            this.menuItem13.Text = "";
             // 
             // MainForm
             // 

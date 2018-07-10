@@ -154,8 +154,11 @@ namespace SimForms
                 if (GetDisease()) MessageBox.Show(null, "Из-за недостаточной активности имунной системы Вы простудились, теперь Ваш иммунитет будет слабеть намного быстрее, также Вам необоходимо покупать лекарства для лечения в течении 5 дней.", "Болезнь!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 TimeBoxValue(0);
                 DayBox.Text = (Convert.ToInt32(DayBox.Text) + 1).ToString();
+                var stats = new Properties.stats();
+                MessageBox.Show(null, "Настал " + DayBox.Text + " день.\nВаш иммунитет изменился на " + (HealthProgress.Value - stats.health) + " ед.\nВаш уровень сытости изменился на " + (FoodProgress.Value - stats.hunger) + " едениц.", "Следующий день!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //баг: не всегда точно показывает изменение здоровья и голода. Причина не известна.
+                SaveGame();
             }
-            SaveGame();
         }
 
         private void newProfileItem_Click(object sender, EventArgs e)
