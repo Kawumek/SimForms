@@ -71,6 +71,7 @@
             this.menuItem8 = new System.Windows.Forms.MenuItem();
             this.menuItem13 = new System.Windows.Forms.MenuItem();
             this.menuItem12 = new System.Windows.Forms.MenuItem();
+            this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
             // 
             // SupermarketCButton
@@ -412,12 +413,19 @@
             // menuItem13
             // 
             this.menuItem13.Index = 0;
-            this.menuItem13.Text = "";
+            this.menuItem13.Text = "Not working";
             // 
             // menuItem12
             // 
             this.menuItem12.Index = 1;
+            this.menuItem12.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem2});
             this.menuItem12.Text = "О программе";
+            // 
+            // menuItem2
+            // 
+            this.menuItem2.Index = 0;
+            this.menuItem2.Text = "Not workin";
             // 
             // MainForm
             // 
@@ -510,6 +518,7 @@
         private System.Windows.Forms.MenuItem menuItem11;
         private System.Windows.Forms.MenuItem menuItem12;
         private System.Windows.Forms.MenuItem menuItem13;
+        private System.Windows.Forms.MenuItem menuItem2;
     }
 }
 

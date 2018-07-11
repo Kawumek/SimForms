@@ -174,7 +174,7 @@ namespace SimForms
 
         private void HouseCButton_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(null, "", "Дом эконом класса");
         }
 
         private void VehiclesButton_Click(object sender, EventArgs e)
