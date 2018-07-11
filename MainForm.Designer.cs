@@ -107,6 +107,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Black;
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(61, 118);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(10, 483);
@@ -116,6 +117,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Black;
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(61, 555);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(452, 10);
@@ -125,6 +127,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Black;
+            this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(412, 293);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(10, 268);
@@ -161,6 +164,7 @@
             // button8
             // 
             this.button8.BackColor = System.Drawing.Color.Black;
+            this.button8.Enabled = false;
             this.button8.Location = new System.Drawing.Point(503, 555);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(10, 132);
@@ -170,6 +174,7 @@
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.Black;
+            this.button9.Enabled = false;
             this.button9.Location = new System.Drawing.Point(342, 677);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(171, 10);
@@ -198,6 +203,7 @@
             // button13
             // 
             this.button13.BackColor = System.Drawing.Color.Black;
+            this.button13.Enabled = false;
             this.button13.Location = new System.Drawing.Point(61, 293);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(431, 10);
